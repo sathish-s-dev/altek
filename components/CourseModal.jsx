@@ -3,6 +3,9 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { Button, IconButton } from 'react-native-paper';
+import { colors } from '../constants/colors';
+import { DataTable } from 'react-native-paper';
 
 const CourseModal = ({
 	details,
@@ -20,6 +23,8 @@ const CourseModal = ({
 	});
 	console.log(value);
 	const navigation = useNavigation();
+
+	const { Row, Cell } = DataTable;
 	return (
 		<Modal
 			animationType='slide'
@@ -30,45 +35,73 @@ const CourseModal = ({
 			}}
 			visible={isVisible}>
 			<LinearGradient
-				colors={['#030300', '#030300']}
-				start={{ x: 0, y: 0 }}
-				end={{ x: 1, y: 1 }}
-				className='justify-center bg-slate-800 mt-64 p-12 z-10 space-y-3 max-w-sm mx-auto rounded-xl'>
-				<TouchableOpacity
-					className='absolute right-3 top-3 bg-white rounded-full p-1'
+				colors={[
+					colors.inActive,
+					colors.dark,
+					colors.dark,
+					colors.dark,
+					colors.dark,
+					colors.dark,
+					colors.inActive,
+				]}
+				start={{ x: 0, y: 1 }}
+				end={{ x: 1, y: 0 }}
+				className='justify-center mt-60 p-10 z-10 space-y-3 max-w-lg mx-auto rounded-xl'>
+				<IconButton
+					className='absolute right-3 top-3  rounded-full p-1'
+					icon={'close'}
+					size={20}
+					iconColor={colors.active}
+					mode='contained'
 					onPress={() => {
 						setModalVisible(false);
-					}}>
-					<Ionicons
-						name='ios-close'
-						size={24}
-						color='red'
-					/>
-				</TouchableOpacity>
-				<Text className='text-slate-100 text-xl font-bold underline underline-offset-4'>
-					{title} ( {level} )
-				</Text>
-				{value.map(({ key, value }, i) => (
-					<Text
-						className='text-slate-100/80 capitalize font-semibold text-[16px]'
-						key={`random-${i}`}>
-						{key} : {value}
-					</Text>
-				))}
+					}}
+				/>
+				<DataTable>
+					<DataTable.Header>
+						<Text className='text-slate-100 text-lg font-bold pb-4'>
+							{title} ( {level} )
+						</Text>
+					</DataTable.Header>
+					{value.map(({ key, value }, i) => (
+						<DataTable.Row
+							key={`random-${i}`}
+							className='border-b-2 border-slate-100'>
+							<DataTable.Cell
+								className='flex-1 text-start'
+								centered={false}
+								textStyle={{
+									color: colors.inActive,
+									textTransform: 'capitalize',
+								}}>
+								{key}
+							</DataTable.Cell>
+							<DataTable.Cell
+								className='flex-[2]'
+								textStyle={{
+									color: colors.inActive,
+									// textTransform: 'capitalize',
+								}}>
+								: {value}
+							</DataTable.Cell>
+						</DataTable.Row>
+					))}
+				</DataTable>
 				<View>
-					<TouchableOpacity
-						className='p-4 px-12 bg-rose-600 justify-center items-center mt-4 rounded-lg'
-						onPress={() =>
+					<Button
+						className='justify-center items-center mt-4 rounded-lg capitalize'
+						textColor={colors.inActive}
+						buttonColor={colors.active}
+						onPress={() => {
+							setModalVisible(false);
 							navigation.navigate('contact', {
 								name: name,
 								title: title,
 								level: level,
-							})
-						}>
-						<Text className='text-slate-100 font-bold capitalize text-[16px]'>
-							request a demo
-						</Text>
-					</TouchableOpacity>
+							});
+						}}>
+						Request demo
+					</Button>
 				</View>
 			</LinearGradient>
 		</Modal>

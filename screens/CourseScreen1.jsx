@@ -5,15 +5,19 @@ import {
 	TouchableOpacity,
 	ScrollView,
 	FlatList,
-	StyleSheet,
+	useWindowDimensions,
 } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { courses } from '../constants/data';
 import CourseModal from '../components/CourseModal';
+import { Button } from 'react-native-paper';
+import { colors } from '../constants/colors';
 
 const CourseScreen = () => {
 	const [modalVisible, setModalVisible] = React.useState(false);
 	const [modalData, setModalData] = React.useState({});
+
+	const height = useWindowDimensions().height;
 
 	const scrollRef = useRef();
 
@@ -37,7 +41,7 @@ const CourseScreen = () => {
 						}}>
 						<Image
 							source={image}
-							className='w-12 h-12 rounded-lg bg-slate-200'
+							className='w-12 h-12 rounded-lg bg-slate-100'
 							resizeMode='cover'
 						/>
 						<Text className='text-slate-500 pt-2'>{name}</Text>
@@ -48,17 +52,17 @@ const CourseScreen = () => {
 				ref={scrollRef}
 				data={courses}
 				keyExtractor={(item, index) => `${item.name}-${index}`}
+				showsVerticalScrollIndicator={false}
 				renderItem={({ item: { data, name } }) => (
-					<View>
+					<View style={{ height: height - 250 }}>
 						<Text className='text-lg text-slate-600 uppercase font-bold mt-6'>
-							Available Courses in {name}:
+							Available packages in {name}:
 						</Text>
 						<View>
 							{data.map(({ title, level, details }, i) => (
-								<TouchableOpacity
+								<Button
 									key={`${title}-${i}`}
 									onPress={() => {
-										console.log(details);
 										setModalVisible(true);
 										setModalData({
 											details,
@@ -74,12 +78,13 @@ const CourseScreen = () => {
 										shadowOpacity: 0.25,
 										shadowRadius: 3.84,
 									}}
-									className='space-y-1 p-4 dark:bg-rose-700 bg-slate-200  my-2 rounded-lg flex-row items-center space-x-2'>
-									<Text className='text-[18px] dark:text-slate-50 capitalize'>
-										{title}
-									</Text>
-									<Text className='dark:text-slate-50'>( {level} )</Text>
-								</TouchableOpacity>
+									className='my-3 rounded-lg items-stretch justify-start space-x-2 w-full'
+									mode='contained'
+									buttonColor={colors.active}
+									textColor={colors.inActive}>
+									<Text className='w-full'>{title}</Text>
+									<Text className='dark:text-slate-50 flex-1'>( {level} )</Text>
+								</Button>
 							))}
 						</View>
 					</View>
@@ -89,7 +94,7 @@ const CourseScreen = () => {
 					paddingBottom: 250,
 				}}
 				ItemSeparatorComponent={
-					<View className=' border-b border-slate-400/50 mt-6' />
+					<View className='border-b border-slate-400/50 mt-6' />
 				}
 			/>
 			{modalVisible && modalData?.name && (
