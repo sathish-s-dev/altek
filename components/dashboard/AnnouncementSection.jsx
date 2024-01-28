@@ -10,8 +10,8 @@ const AnnouncementSection = () => {
 				source={require('../../assets/happy.png')}
 				className='w-48 h-48 object-contain'
 			/>
-			<View className=' flex-row items-center mx-4'>
-				<Text className='text-3xl text-center font-extrabold tracking-widest text-primary'>
+			<View className='flex-row items-center mx-4'>
+				<Text className='text-3xl text-center font-extrabold tracking-widest text-inActive'>
 					🎉 100% placements for 2023 & 2024 Freshers 🎉
 				</Text>
 			</View>

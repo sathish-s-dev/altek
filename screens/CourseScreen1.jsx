@@ -24,9 +24,9 @@ const CourseScreen = () => {
 	// console.log(modalData);
 
 	return (
-		<View className='bg-white'>
-			<Text className='text-xl p-4 pb-2 text-slate-600 uppercase font-bold'>
-				Courses:
+		<View className='bg-dark'>
+			<Text className='text-lg tracking-widest p-4 pb-2 text-slate-200 uppercase font-semibold'>
+				Offered Courses:
 			</Text>
 			<ScrollView horizontal>
 				{courses.map(({ image, name }, index) => (
@@ -44,7 +44,7 @@ const CourseScreen = () => {
 							className='w-12 h-12 rounded-lg bg-slate-100'
 							resizeMode='cover'
 						/>
-						<Text className='text-slate-500 pt-2'>{name}</Text>
+						<Text className='text-slate-300 pt-2'>{name}</Text>
 					</TouchableOpacity>
 				))}
 			</ScrollView>
@@ -55,7 +55,7 @@ const CourseScreen = () => {
 				showsVerticalScrollIndicator={false}
 				renderItem={({ item: { data, name } }) => (
 					<View style={{ height: height - 250 }}>
-						<Text className='text-lg text-slate-600 uppercase font-bold mt-6'>
+						<Text className='text-lg text-slate-300 uppercase font-bold mt-6'>
 							Available packages in {name}:
 						</Text>
 						<View>

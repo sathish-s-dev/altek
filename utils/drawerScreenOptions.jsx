@@ -8,7 +8,7 @@ export const drawerScreenOptions = (icon, label) => {
 			<MaterialIcons
 				name={icon}
 				size={18}
-				color={focused ? colors.inActive : colors.dark}
+				color={focused ? colors.inActive : colors.inActive}
 				style={{ marginRight: -20, marginLeft: 10 }}
 			/>
 		),
@@ -26,7 +26,7 @@ export const navigatorOptions = (navigation) => ({
 			style={{ paddingRight: 16 }}
 			onPress={() => navigation.navigate('dashboard')}>
 			<Image
-				source={require('../assets/Altek_Logo2.png')}
+				source={require('../assets/Altek_Logo3.png')}
 				style={{ width: 80, height: 50 }}
 				resizeMode='contain'
 			/>
@@ -36,13 +36,13 @@ export const navigatorOptions = (navigation) => ({
 		</TouchableOpacity>
 	),
 	headerTitle: '',
-	headerShadowVisible: false,
-	drawerInactiveBackgroundColor: '#fff',
+	// headerShadowVisible: false,
 	drawerActiveBackgroundColor: colors.active,
 	drawerActiveTintColor: colors.inActive,
+	drawerInactiveTintColor: colors.inActive,
 	drawerContentContainerStyle: {
 		paddingTop: 80,
-		backgroundColor: colors.inActive,
+		backgroundColor: colors.dark,
 		flex: 1,
 		rowGap: 12,
 	},
@@ -52,8 +52,21 @@ export const navigatorOptions = (navigation) => ({
 		fontSize: 16,
 		textTransform: 'capitalize',
 	},
-	headerTintColor: colors.active,
+	headerTintColor: colors.inActive,
 	headerStyle: {
-		backgroundColor: colors.inActive,
+		backgroundColor: colors.dark,
+		// backgroundOpacity: 50,
+		shadowColor: '#fff',
+		shadowOpacity: 0.3,
+		shadowOffset: {
+			x: 10,
+			y: 10,
+		},
+
+		// borderBottomColor: '#FFF',
+	},
+	drawerStyle: {
+		backgroundColor: colors.dark,
+		elevation: 5,
 	},
 });

@@ -5,16 +5,20 @@ import { colors } from '../constants/colors';
 import MapView, { Marker } from 'react-native-maps';
 import Lottie from 'lottie-react-native';
 
+
 const AboutScreen = () => {
 	return (
-		<ScrollView showsVerticalScrollIndicator={false}>
+		<ScrollView
+			showsVerticalScrollIndicator={false}
+			bounces={false}
+			className='bg-dark'>
 			<LinearGradient
-				colors={['#fceef2', '#fff', '#fceef2']}
+				colors={[colors.dark, colors.dark, colors.dark]}
 				start={{ x: 0, y: 1 }}
 				end={{ x: 1, y: 0 }}
 				className='flex-1 justify items-start space-y-10 px-4 py-10'>
 				<Image
-					source={require('../assets/Altek_Logo2.png')}
+					source={require('../assets/Altek_Logo3.png')}
 					className='self-center w-32'
 					resizeMode='contain'
 				/>
@@ -40,22 +44,16 @@ const AboutScreen = () => {
 						className='w-64 h-48 self-center'></Lottie>
 				</View> */}
 
-				<Text
-					className='text-[16px] tracking-wide opacity-80'
-					style={{ color: colors.active }}>
+				<Text className='text-[16px] tracking-wide opacity-80 text-white'>
 					{'  '}ALTEK is at its best in providing excellent training programs in
 					various courses from best, experienced & Real-Time Professional
 					faculties from the IT Industry
 				</Text>
-				<Text
-					className='text-[16px] tracking-wide opacity-80'
-					style={{ color: colors.active }}>
+				<Text className='text-[16px] tracking-wide opacity-80 text-white'>
 					{'  '}Providing 100% Placement Assistance for each student who
 					finished Course
 				</Text>
-				<Text
-					className='text-[16px] tracking-wide opacity-80'
-					style={{ color: colors.active }}>
+				<Text className='text-[16px] tracking-wide opacity-80 text-white'>
 					{'  '}ALTEK has emerged as the Best training Institution for Java
 					Fullstack (J2SE & J2EE), Aspn.net Fullstack, MERN Fullstack, Python
 					Fullstack (Django) , Domain Purchase, Web Hosting, C , C# , Web
@@ -67,10 +65,7 @@ const AboutScreen = () => {
 				/>
 			</LinearGradient>
 			<View className='mb-48 px-4 -mt-24'>
-				<Text
-					className='text-slate-500 text-lg uppercase tracking-widest font-bold pb-4'
-					style={{ color: colors.active }}
-					>
+				<Text className='text-inActive text-lg uppercase tracking-widest font-bold pb-4'>
 					Our Location:
 				</Text>
 

@@ -16,6 +16,7 @@ import {
 	drawerScreenOptions,
 	navigatorOptions,
 } from '../utils/drawerScreenOptions';
+import { Carousal, LoginScreen } from '../screens/LoginScreeen';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +32,7 @@ const DrawerNavigator = () => {
 						{...props}
 						className='bg-slate-200 self-center'>
 						<Image
-							source={require('../assets/Altek_Logo2.png')}
+							source={require('../assets/Altek_Logo3.png')}
 							resizeMode='contain'
 							className='w-24 mx-4'
 						/>
@@ -66,6 +67,11 @@ const DrawerNavigator = () => {
 				component={ContactScreen}
 				options={drawerScreenOptions('call', 'Contact')}
 			/>
+			{/* <Drawer.Screen
+				name='login'
+				component={Carousal}
+				options={drawerScreenOptions('login', 'Login')}
+			/> */}
 		</Drawer.Navigator>
 	);
 };

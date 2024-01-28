@@ -21,6 +21,7 @@ const CourseModal = ({
 			value: details[key],
 		};
 	});
+
 	console.log(value);
 	const navigation = useNavigation();
 
